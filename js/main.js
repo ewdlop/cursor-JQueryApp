@@ -77,4 +77,83 @@ $(document).ready(function() {
             $('.navbar').css('background', '#333');
         }
     });
+
+    // 数字增长动画
+    function animateNumbers() {
+        $('.stat-item h3').each(function() {
+            const $this = $(this);
+            const countTo = parseInt($this.text());
+            
+            $({ countNum: 0 }).animate({
+                countNum: countTo
+            }, {
+                duration: 2000,
+                easing: 'swing',
+                step: function() {
+                    $this.text(Math.floor(this.countNum) + '+');
+                },
+                complete: function() {
+                    $this.text(this.countNum + '+');
+                }
+            });
+        });
+    }
+
+    // 滚动动画
+    function checkScroll() {
+        const windowHeight = $(window).height();
+        const scrollTop = $(window).scrollTop();
+
+        $('.service-card, .stat-item').each(function() {
+            const elementTop = $(this).offset().top;
+            if (elementTop < scrollTop + windowHeight - 100) {
+                $(this).addClass('animate');
+            }
+        });
+
+        // 检查是否到达统计数字部分
+        if ($('.about-stats').length) {
+            const statsTop = $('.about-stats').offset().top;
+            if (statsTop < scrollTop + windowHeight - 100) {
+                animateNumbers();
+                // 移除滚动监听，避免重复触发
+                $(window).off('scroll', checkScroll);
+            }
+        }
+    }
+
+    // 初始化滚动监听
+    $(window).on('scroll', checkScroll);
+    checkScroll(); // 初始检查
+
+    // 平滑滚动到顶部按钮
+    const $scrollTop = $('<button>', {
+        class: 'scroll-top',
+        html: '<i class="fas fa-arrow-up"></i>'
+    }).appendTo('body');
+
+    $scrollTop.click(function() {
+        $('html, body').animate({
+            scrollTop: 0
+        }, 800);
+    });
+
+    // 控制滚动到顶部按钮的显示/隐藏
+    $(window).scroll(function() {
+        if ($(this).scrollTop() > 300) {
+            $scrollTop.fadeIn();
+        } else {
+            $scrollTop.fadeOut();
+        }
+    });
+
+    // 服务卡片悬停效果
+    $('.service-card').hover(
+        function() {
+            $(this).find('i').css('transform', 'scale(1.2)');
+        },
+        function() {
+            $(this).find('i').css('transform', 'scale(1)');
+        }
+    );
 }); 
