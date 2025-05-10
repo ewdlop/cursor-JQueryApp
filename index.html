@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery 示例网站</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">我的网站</div>
+        <ul class="nav-links">
+            <li><a href="#home">首页</a></li>
+            <li><a href="#about">关于</a></li>
+            <li><a href="#services">服务</a></li>
+            <li><a href="#contact">联系我们</a></li>
+        </ul>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="slider">
+            <div class="slide active">
+                <img src="https://picsum.photos/1200/400" alt="幻灯片1">
+                <div class="slide-content">
+                    <h2>欢迎来到我的网站</h2>
+                    <p>这是一个使用 jQuery 构建的响应式网站</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="https://picsum.photos/1200/401" alt="幻灯片2">
+                <div class="slide-content">
+                    <h2>现代化设计</h2>
+                    <p>简洁优雅的用户界面</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="https://picsum.photos/1200/402" alt="幻灯片3">
+                <div class="slide-content">
+                    <h2>交互体验</h2>
+                    <p>流畅的动画效果</p>
+                </div>
+            </div>
+        </div>
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
+    </section>
+
+    <section id="contact" class="contact-form">
+        <h2>联系我们</h2>
+        <form id="contactForm">
+            <div class="form-group">
+                <input type="text" id="name" placeholder="您的姓名" required>
+            </div>
+            <div class="form-group">
+                <input type="email" id="email" placeholder="您的邮箱" required>
+            </div>
+            <div class="form-group">
+                <textarea id="message" placeholder="您的留言" required></textarea>
+            </div>
+            <button type="submit">发送</button>
+        </form>
+    </section>
+
+    <script src="js/main.js"></script>
+</body>
+</html> 
