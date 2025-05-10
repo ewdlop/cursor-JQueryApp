@@ -246,4 +246,56 @@ $(document).ready(function() {
     $('.news-card').each(function(index) {
         $(this).css('animation-delay', `${index * 0.2}s`);
     });
+
+    // FAQ折叠功能
+    $('.faq-question').click(function() {
+        const $faqItem = $(this).parent();
+        const $answer = $(this).next();
+        
+        if ($faqItem.hasClass('active')) {
+            $faqItem.removeClass('active');
+            $answer.css('max-height', '0');
+        } else {
+            $('.faq-item').removeClass('active');
+            $('.faq-answer').css('max-height', '0');
+            $faqItem.addClass('active');
+            $answer.css('max-height', $answer[0].scrollHeight + 'px');
+        }
+    });
+
+    // 价格方案按钮点击效果
+    $('.pricing-btn').click(function() {
+        const plan = $(this).closest('.pricing-card').find('h3').text();
+        $('#contactForm').prepend(`
+            <div class="form-group">
+                <input type="text" value="咨询${plan}方案" readonly>
+            </div>
+        `);
+        $('html, body').animate({
+            scrollTop: $('#contact').offset().top - 60
+        }, 1000);
+    });
+
+    // 团队成员社交链接悬停效果
+    $('.member-social a').hover(
+        function() {
+            $(this).css('transform', 'scale(1.2)');
+        },
+        function() {
+            $(this).css('transform', 'scale(1)');
+        }
+    );
+
+    // 价格卡片悬停效果
+    $('.pricing-card').hover(
+        function() {
+            $(this).find('.pricing-btn').css('background', '#555');
+        },
+        function() {
+            $(this).find('.pricing-btn').css('background', '#333');
+        }
+    );
+
+    // 初始化FAQ状态
+    $('.faq-answer').css('max-height', '0');
 }); 
