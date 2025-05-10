@@ -449,4 +449,302 @@ button[type="submit"]:hover {
 
 .stat-item:hover h3 {
     transform: scale(1.1);
+}
+
+/* 作品展示部分样式 */
+.portfolio-section {
+    padding: 6rem 0;
+    background: #fff;
+}
+
+.portfolio-filter {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 0.5rem 1.5rem;
+    border: 2px solid #333;
+    background: transparent;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-radius: 25px;
+}
+
+.filter-btn.active, .filter-btn:hover {
+    background: #333;
+    color: #fff;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.portfolio-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.portfolio-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+    padding: 2rem;
+    text-align: center;
+    color: #fff;
+}
+
+.portfolio-item:hover .portfolio-overlay {
+    opacity: 1;
+}
+
+.portfolio-item:hover img {
+    transform: scale(1.1);
+}
+
+.portfolio-overlay h3 {
+    margin-bottom: 1rem;
+    transform: translateY(20px);
+    transition: transform 0.3s;
+}
+
+.portfolio-overlay p {
+    margin-bottom: 1.5rem;
+    transform: translateY(20px);
+    transition: transform 0.3s 0.1s;
+}
+
+.portfolio-link {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem 1.5rem;
+    border: 2px solid #fff;
+    border-radius: 25px;
+    transform: translateY(20px);
+    transition: all 0.3s 0.2s;
+}
+
+.portfolio-item:hover .portfolio-overlay h3,
+.portfolio-item:hover .portfolio-overlay p,
+.portfolio-item:hover .portfolio-link {
+    transform: translateY(0);
+}
+
+.portfolio-link:hover {
+    background: #fff;
+    color: #333;
+}
+
+/* 新闻部分样式 */
+.news-section {
+    padding: 6rem 0;
+    background: #f8f9fa;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.news-card {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.news-card:hover {
+    transform: translateY(-10px);
+}
+
+.news-image {
+    position: relative;
+}
+
+.news-image img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.news-date {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #333;
+    color: #fff;
+    padding: 0.5rem;
+    text-align: center;
+    border-radius: 4px;
+}
+
+.news-date .day {
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: block;
+}
+
+.news-content {
+    padding: 1.5rem;
+}
+
+.news-content h3 {
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.news-content p {
+    color: #666;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.read-more {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.read-more:hover {
+    color: #666;
+}
+
+/* 客户评价部分样式 */
+.testimonials-section {
+    padding: 6rem 0;
+    background: #fff;
+}
+
+.testimonials-slider {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.testimonial-item {
+    padding: 2rem;
+    text-align: center;
+}
+
+.testimonial-content {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 8px;
+    position: relative;
+}
+
+.testimonial-content p {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.testimonial-author img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.author-info h4 {
+    color: #333;
+    margin-bottom: 0.3rem;
+}
+
+.author-info p {
+    color: #666;
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.testimonial-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.prev-testimonial, .next-testimonial {
+    background: #333;
+    color: #fff;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.prev-testimonial:hover, .next-testimonial:hover {
+    background: #555;
+}
+
+.testimonial-dots {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ddd;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.dot.active {
+    background: #333;
+}
+
+/* 响应式调整 */
+@media screen and (max-width: 768px) {
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .news-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .testimonial-content {
+        padding: 1.5rem;
+    }
 } 

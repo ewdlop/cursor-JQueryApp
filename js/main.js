@@ -156,4 +156,94 @@ $(document).ready(function() {
             $(this).find('i').css('transform', 'scale(1)');
         }
     );
+
+    // 作品展示筛选功能
+    $('.filter-btn').click(function() {
+        const filter = $(this).data('filter');
+        
+        $('.filter-btn').removeClass('active');
+        $(this).addClass('active');
+        
+        if (filter === 'all') {
+            $('.portfolio-item').fadeIn();
+        } else {
+            $('.portfolio-item').hide();
+            $(`.portfolio-item[data-category="${filter}"]`).fadeIn();
+        }
+    });
+
+    // 新闻卡片动画
+    $('.news-card').hover(
+        function() {
+            $(this).find('.news-image img').css('transform', 'scale(1.1)');
+        },
+        function() {
+            $(this).find('.news-image img').css('transform', 'scale(1)');
+        }
+    );
+
+    // 客户评价轮播
+    let currentTestimonial = 0;
+    const testimonials = $('.testimonial-item');
+    const totalTestimonials = testimonials.length;
+
+    // 创建轮播点
+    for (let i = 0; i < totalTestimonials; i++) {
+        $('.testimonial-dots').append('<div class="dot"></div>');
+    }
+    $('.dot').first().addClass('active');
+
+    function showTestimonial(n) {
+        testimonials.hide();
+        currentTestimonial = (n + totalTestimonials) % totalTestimonials;
+        testimonials.eq(currentTestimonial).fadeIn();
+        
+        $('.dot').removeClass('active');
+        $('.dot').eq(currentTestimonial).addClass('active');
+    }
+
+    // 自动轮播
+    let testimonialInterval = setInterval(() => {
+        showTestimonial(currentTestimonial + 1);
+    }, 5000);
+
+    // 上一张/下一张按钮
+    $('.prev-testimonial').click(function() {
+        clearInterval(testimonialInterval);
+        showTestimonial(currentTestimonial - 1);
+        testimonialInterval = setInterval(() => {
+            showTestimonial(currentTestimonial + 1);
+        }, 5000);
+    });
+
+    $('.next-testimonial').click(function() {
+        clearInterval(testimonialInterval);
+        showTestimonial(currentTestimonial + 1);
+        testimonialInterval = setInterval(() => {
+            showTestimonial(currentTestimonial + 1);
+        }, 5000);
+    });
+
+    // 点击轮播点切换
+    $('.dot').click(function() {
+        const index = $(this).index();
+        clearInterval(testimonialInterval);
+        showTestimonial(index);
+        testimonialInterval = setInterval(() => {
+            showTestimonial(currentTestimonial + 1);
+        }, 5000);
+    });
+
+    // 初始化显示第一个评价
+    showTestimonial(0);
+
+    // 作品展示图片加载动画
+    $('.portfolio-item').each(function(index) {
+        $(this).css('animation-delay', `${index * 0.2}s`);
+    });
+
+    // 新闻卡片加载动画
+    $('.news-card').each(function(index) {
+        $(this).css('animation-delay', `${index * 0.2}s`);
+    });
 }); 
